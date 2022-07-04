@@ -26,6 +26,7 @@ def index(request, gera_dev_cook=None):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
+            ok = True
             text = form.cleaned_data['text']
             SenderMessages.sended_message(text)
             return render(request, 'index.html', {'ok': ok})
